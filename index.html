@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
-    <link rel="style" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header><h1>Timed Code Quiz</h1></header>
@@ -12,19 +12,21 @@
       <section class="scoreboard">
         <div class="scoreboard_score">
           Leader Initials:
-          <span class="scoreboard_value scoreboard_value-initials">LS</span>
+          <span class="scoreboard_value scoreboard_value-initials">None</span>
         </div>
         <div class="scoreboard_score">
           Leader Score:
-          <span class="scoreboard_value scoreboard_value-score">3</span>
+          <span class="scoreboard_value scoreboard_value-score">0</span>
         </div>
       </section>
-      <section class="quiz_area">
+      <section id="quiz_area">
         <button class="startBtn">Start!</button>
-        <div class="quiz_timer">60</div>
-        <div class="quiz_question">Question text in here</div>
+        <div class="quiz_timer hide">
+          Time Left: <span class="countDown">60</span>
+        </div>
+        <div class="quiz_question hide">Question text in here</div>
       </section>
-      <section class="quiz_answer">
+      <section class="quiz_answer hide">
         <button class="button_answer_1">answer 1</button>
         <button class="button_answer_2">answer 2</button>
         <button class="button_answer_3">answer 3</button>
