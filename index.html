@@ -11,12 +11,12 @@
     <main>
       <section class="scoreboard">
         <div class="scoreboard_score">
-          Questions Passed:
-          <span class="scoreboard_value scoreboard_value-pass">5</span>
+          Leader Initials:
+          <span class="scoreboard_value scoreboard_value-initials">LS</span>
         </div>
         <div class="scoreboard_score">
-          Questions Missed:
-          <span class="scoreboard_value scoreboard_value-miss">3</span>
+          Leader Score:
+          <span class="scoreboard_value scoreboard_value-score">3</span>
         </div>
       </section>
       <section class="quiz_area">
@@ -29,6 +29,21 @@
         <button class="button_answer_2">answer 2</button>
         <button class="button_answer_3">answer 3</button>
         <button class="button_answer_4">answer 4</button>
+      </section>
+      <section class="save">
+        <label for="saveInitial">Type Initials</label>
+        <input
+          type="text"
+          placeholder="Initials"
+          name="initialsText"
+          id="saveInitial" />
+        <label for="saveScore">Input Score</label>
+        <input
+          type="text"
+          placeholder="Your Score"
+          name="scoreText"
+          id="saveScore" />
+        <button class="saveBtn">SAVE!</button>
       </section>
     </main>
     <script src="./assets/js/script.js"></script>
