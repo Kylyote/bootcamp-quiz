@@ -60,6 +60,10 @@ function handleClickStart(){
         //start timer
         timeLeft = gameDuration;
         timer = setInterval(handleTimerCountdown, 1000);
+        timeLeft = timeLeft - timer;
+        while (timer > 0){
+            handleTimerCountdown();
+        }
         // show first question with answers
         changeQuestionAnswer();
 
@@ -136,7 +140,14 @@ function postHighScore() {
 
 // Event: quiz ends;
 function handleQuizEnd(didPass) {
-    
+    if (didPass){
+        console.log("the game ended true");
+        // show save location with current time it took to finish the questions
+        // hide timer and unneeded elements
+    } else {
+        console.log("game ended in failure");
+        // 
+    }
 }
 
 // Start quiz 
