@@ -1,3 +1,8 @@
 .hide {
   display: none;
 }
+body {
+  color: lightgray;
+  background-color: rgb(41, 36, 36);
+  font-family: Arial, Helvetica, sans-serif;
+}

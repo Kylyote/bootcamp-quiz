@@ -7,32 +7,32 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header><h1>Timed Code Quiz</h1></header>
+    <header><h1 id="quiz-title">Timed Code Quiz</h1></header>
     <main>
       <section class="scoreboard">
-        <div class="scoreboard_score">
+        <div class="scoreboard-score">
           Leader Initials:
-          <span class="scoreboard_value scoreboard_value-initials">None</span>
+          <span class="scoreboard-value scoreboard-value-initials">None</span>
         </div>
-        <div class="scoreboard_score">
+        <div class="scoreboard-score">
           Leader Score:
-          <span class="scoreboard_value scoreboard_value-score">0</span>
+          <span class="scoreboard-value scoreboard-value-score">0</span>
         </div>
       </section>
-      <section id="quiz_area">
+      <section id="quiz-area">
         <button class="startBtn">Start!</button>
-        <div class="quiz_timer hide">
+        <div class="quiz-timer hide">
           Time Left: <span class="countDown">60</span>
         </div>
-        <div class="quiz_question hide">Question text in here</div>
+        <div class="quiz-question hide">Question text in here</div>
       </section>
-      <section class="quiz_answer hide">
-        <button class="button_answer_1">answer 1</button>
-        <button class="button_answer_2">answer 2</button>
-        <button class="button_answer_3">answer 3</button>
-        <button class="button_answer_4">answer 4</button>
+      <section class="quiz-answer hide">
+        <button class="button-answer-1">answer 1</button>
+        <button class="button-answer-2">answer 2</button>
+        <button class="button-answer-3">answer 3</button>
+        <button class="button-answer-4">answer 4</button>
       </section>
-      <section class="save">
+      <section class="save hide">
         <label for="saveInitial">Type Initials</label>
         <input
           type="text"
@@ -46,6 +46,9 @@
           name="scoreText"
           id="saveScore" />
         <button class="saveBtn">SAVE!</button>
+      </section>
+      <section class="hide restart-btn-area">
+        <button class="restart-btn">Restart</button>
       </section>
     </main>
     <script src="./assets/js/script.js"></script>
