@@ -4,15 +4,16 @@ Code quiz that counts down to 0 as questions are answered.
 
 ## Description
 
-- Code is currently only in a partially functioning state
+This is a simple website that can be used to create multiple choice quizzes. As of right now it is more focused towards coding of JavaScript and HTML. The question arrays can be easily expanded upon to include more topics. The answer and answer key arrays will have to be properly updated as well to reflect the additional questions.
 
-- Start button functions but timer is not displayed to countdown
-- As of this moment, the git deployed page is not functioning like the local deploy
-  This homework was much tougher than the password. I need to practice either better variable naming practices or find ways to cutdown on the total amount of variables flying around as fidning what went where slowed me down terribly.
+Future development can see the implementation of written answers and possible integration into an open AI engine so that written responses will not have to match the correct answer word for word.
 
 ## Sources
 
-https://www.loom.com/share/29b038373f6243b6ad7a1883c6e0d0ee - this video John provided of doing mini-project 4 was invaluable to what I have so far. Following along with him while I wrote slightly different code gave me enough hints to figure out what different pieces did.
+- https://www.loom.com/share/29b038373f6243b6ad7a1883c6e0d0ee - this video John provided of doing mini-project 4 was invaluable to what I have so far. Following along with him while I wrote slightly different code gave me enough hints to figure out what different pieces did.
+- Donnie Rawlings
+- Chelsea Wagner
+- Ample use of Phind
 
 # Links and Images
 
