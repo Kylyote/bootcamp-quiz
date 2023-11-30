@@ -17,7 +17,7 @@ var button3El = document.querySelector(".button-answer-3");
 var button4El = document.querySelector(".button-answer-4");
 var saveArea = document.querySelector(".save");
 var saveScoreBtn = document.querySelector(".saveBtn");
-var restartArea = document.querySelector("restart-btn-area");
+var restartArea = document.querySelector(".restart-btn-area");
 var restartQuizBtn = document.querySelector(".restart-btn");
 var initialText = document.querySelector("#initialsText");
 var scoreText = document.querySelector("#scoreText");
@@ -101,6 +101,13 @@ function handleClickStart() {
 }
 startQuizBtn.addEventListener("click", handleClickStart);
 
+// Event: restart button
+function handleClickRestart() {
+  showElement(startQuizBtn);
+  quizTitle.textContent = "Timed Code Quiz";
+  showElement(scoreboardEl);
+}
+restartQuizBtn.addEventListener("click", handleClickRestart);
 // Event: timer countdown
 // function handleTimerCountdown(ev) {
 //   console.log("countdown called");
@@ -137,10 +144,13 @@ button1El.addEventListener("click", handleAnswerPick);
 button2El.addEventListener("click", handleAnswerPick);
 button3El.addEventListener("click", handleAnswerPick);
 button4El.addEventListener("click", handleAnswerPick);
+
 // Event: save initials and score
 function saveScores() {
   var scores = kStorageScore;
 }
+
+// Event: save button
 saveScoreBtn.addEventListener("click", function (event) {
   if (localInitial == null) {
     initialText = initials;
@@ -192,10 +202,14 @@ function handleQuizEnd(didPass) {
     console.log("the game ended true");
     // show save location with current time it took to finish the questions
     // hide timer and unneeded elements
+    score = score * 5 + timeLeft;
+    questionEl.textContent = "Your Score Is: " + score;
     hideElement(quizTimer);
-    hideElement(questionEl);
+    // hideElement(questionEl);
     hideElement(answerEl);
     showElement(saveArea);
+    showElement(restartArea);
+    console.log(`Score: ${score} and timeleft: ${timeLeft}`);
   } else {
     console.log("game ended in failure");
     // Add what is shown upon failure
@@ -203,6 +217,7 @@ function handleQuizEnd(didPass) {
     hideElement(questionEl);
     hideElement(answerEl);
     hideElement(scoreboardEl);
+    showElement(restartArea);
     quizTitle.textContent = "You Failed!";
   }
 }
