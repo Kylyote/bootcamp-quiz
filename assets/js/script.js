@@ -1,7 +1,10 @@
+// Declaring variables that control local storage
+let kStorageScore = "quiz-score";
+let kStorageInitials = "quiz-initials";
 //Declaring variables that control webpage
 
 var scoreboardEl = document.querySelector(".scoreboard");
-var initialEl = document.querySelector(".scoreboard-value-initial");
+var initialEl = document.querySelector(".scoreboard-value-initials");
 var scoreEl = document.querySelector(".scoreboard-value-score");
 var timeEl = document.querySelector(".countDown");
 var quizTitle = document.querySelector("#quiz-title");
@@ -19,10 +22,6 @@ var saveArea = document.querySelector(".save");
 var saveScoreBtn = document.querySelector(".saveBtn");
 var restartArea = document.querySelector(".restart-btn-area");
 var restartQuizBtn = document.querySelector(".restart-btn");
-var initialText = document.querySelector("#initialsText");
-var scoreText = document.querySelector("#scoreText");
-var localInitial = localStorage.getItem("Initial");
-var localScore = localStorage.getItem("Score");
 
 //declaring state variables
 var initials = "";
@@ -34,7 +33,6 @@ var currentQuestion = 0;
 // declaring none changing variables
 const question1 = "Is this a proper question?";
 const gameDuration = 60;
-let kStorageScore = "Module-4-quiz-score";
 // Questions
 const quizQuestions = [
   "Commonly used data types do NOT include.",
@@ -45,8 +43,8 @@ const quizQuestions = [
 // Answers
 const quizAnswers = [
   ["Boolean", "Numbers", "Alerts", "Strings"],
-  ["Talk Through", "Rubber Duck Debugging", "Wrong Answer 3", "Wrong Answer 4"],
-  ["Wrong Answer 1", "Wrong Answer 2", "Wrong Answer 3", "Paranthesis"],
+  ["Talk Through", "Rubber Duck Debugging", "Insanity", "Repetition"],
+  ["Brackets", "Mario Mustaches", "Curly Braces", "Paranthesis"],
   ["Other Arrays", "Objects", "Single Variables", "All of the Above"],
 ];
 // Answer key
@@ -59,10 +57,11 @@ function init() {
 
   //retrieve data from local storage
   var scores = JSON.parse(localStorage.getItem(kStorageScore));
+  var initials = JSON.parse(localStorage.getItem(kStorageInitials));
 
   if (scores) {
     initials = scores.initials;
-    score = scores.score;
+    // score = scores.score;
   }
 }
 
@@ -75,10 +74,10 @@ function handleClickStart() {
     timeLeft = gameDuration;
     // Function to handle the event timer countdown.
     timer = setInterval(function () {
-      console.log("countdown called");
+      // console.log("countdown called");
       timeLeft--;
       timeEl.textContent = timeLeft;
-      console.log(timeLeft);
+      // console.log(timeLeft);
       if (timeLeft === 0) {
         handleQuizEnd(false);
       }
@@ -103,9 +102,33 @@ startQuizBtn.addEventListener("click", handleClickStart);
 
 // Event: restart button
 function handleClickRestart() {
+  // Reset initial values
+  score = 0;
+  timeLeft = gameDuration;
+  currentQuestion = 0;
+  timer = null;
+
+  // get the saved scores
+  let scores = JSON.parse(localStorage.getItem(kStorageScore));
+  let initials = JSON.parse(localStorage.getItem(kStorageInitials));
+
+  initialEl.innerHTML = initials;
+  scoreEl.innerHTML = scores;
+
+  timeEl.textContent = gameDuration;
+
   showElement(startQuizBtn);
-  quizTitle.textContent = "Timed Code Quiz";
   showElement(scoreboardEl);
+  showElement(saveArea);
+  quizTitle.textContent = "Timed Code Quiz";
+
+  hideElement(restartArea);
+  hideElement(quizTimer);
+  hideElement(questionEl);
+  hideElement(answerEl);
+
+  // Doing this to reattach the event listener to the start button
+  startQuizBtn.addEventListener("click", handleClickStart);
 }
 restartQuizBtn.addEventListener("click", handleClickRestart);
 // Event: timer countdown
@@ -131,6 +154,7 @@ function handleAnswerPick(ev) {
     console.log("correct");
     // if correct, increment score
     score++;
+    console.log(`Console log of score: ${score}`);
     changeQuestionAnswer();
   } else {
     // if incorrect, decrement time
@@ -146,17 +170,22 @@ button3El.addEventListener("click", handleAnswerPick);
 button4El.addEventListener("click", handleAnswerPick);
 
 // Event: save initials and score
-function saveScores() {
-  var scores = kStorageScore;
-}
+// function saveScores() {
+//   var scores = kStorageScore;
+//   localStorage.setItem(kStorageScore, scoreText);
+//   localStorage.setItem(kStorageInitials, initialText);
+// }
 
 // Event: save button
 saveScoreBtn.addEventListener("click", function (event) {
-  if (localInitial == null) {
+  let initialText = document.querySelector("#saveInitial").value;
+  let scoreText = document.querySelector("#saveScore").value;
+  if (localStorage.getItem(kStorageInitials) == null) {
     initialText = initials;
   }
-  localStorage.setItem("Initial", initialText);
-  localStorage.setItem("Score", scoreText);
+  localStorage.setItem(kStorageInitials, JSON.stringify(initialText));
+  localStorage.setItem(kStorageScore, JSON.stringify(scoreText));
+  console.log(`Initials: ${initialText} and Score: ${scoreText}`);
 });
 
 // Function to set current question and answer
@@ -200,9 +229,10 @@ function handleQuizEnd(didPass) {
   clearInterval(timer);
   if (didPass) {
     console.log("the game ended true");
+    // Change the score to make it look bigger cause bigger is better.
+    score = score * 5 + timeLeft;
     // show save location with current time it took to finish the questions
     // hide timer and unneeded elements
-    score = score * 5 + timeLeft;
     questionEl.textContent = "Your Score Is: " + score;
     hideElement(quizTimer);
     // hideElement(questionEl);
