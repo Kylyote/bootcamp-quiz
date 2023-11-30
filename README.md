@@ -5,8 +5,10 @@ Code quiz that counts down to 0 as questions are answered.
 ## Description
 
 - Code is currently only in a partially functioning state
-- Start button functions but timer is not displayed to countdown  
-  This homework was much tougher than the password. I need to practice either better variable naming practices or find ways to cutdown on the total amount of variables flying around as finding what went where slowed me down terribly.
+
+- Start button functions but timer is not displayed to countdown
+- As of this moment, the git deployed page is not functioning like the local deploy
+  This homework was much tougher than the password. I need to practice either better variable naming practices or find ways to cutdown on the total amount of variables flying around as fidning what went where slowed me down terribly.
 
 ## Sources
 
